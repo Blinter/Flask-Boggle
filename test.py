@@ -24,13 +24,27 @@ class FlaskTests(TestCase):
         """Test if word is valid by modifying the board in the session"""
         with self.client as client:
             with client.session_transaction() as sess:
-                sess['board'] = [["C", "A", "T", "T", "T"],
-                                 ["C", "A", "T", "T", "T"],
-                                 ["C", "A", "T", "T", "T"],
-                                 ["C", "A", "T", "T", "T"],
-                                 ["C", "A", "T", "T", "T"]]
-        response = self.client.post('/validate', data=dict(word='cat'))
+                sess['board'] = [["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"]]
+        response = self.client.post('/validate', data=dict(word='fat'))
         self.assertIn(b'ok', response.data)
+
+    def test_duplicate_word(self):
+        """Test if word is valid by modifying the board in the session"""
+        with self.client as client:
+            with client.session_transaction() as sess:
+                sess['board'] = [["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"],
+                                 ["F", "A", "T", "T", "T"]]
+        response = self.client.post('/validate', data=dict(word='fat'))
+        self.assertIn(b'ok', response.data)
+        response = self.client.post('/validate', data=dict(word='fat'))
+        self.assertIn(b'duplicate', response.data)
 
     def test_invalid_word(self):
         """Test if word is in the dictionary"""
