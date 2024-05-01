@@ -1,6 +1,6 @@
-# Flask Boggle
+# Boggle
 
-### Utilizes session on Flask on Python + JS
+### Utilizes Flask (Python) + jQuery (Javscript)
 + Tests included
 + CSS styles
 + Documented functions
