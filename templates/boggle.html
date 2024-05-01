@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}
+BOGGLE
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block header %}BOGGLE
+{% endblock %}
+{% block content %}
+<table>
+    <tr>
+        <td id="stat">Total Games</td>
+        <td id="stat">High Score</td>
+        <td id="stat">Current Score</td>
+        <td id="stat">Time Left</td>
+    </tr>
+    <tr>
+    <td id="statNumber"><span id="gamesPlayed">{% if games_played>=0 %}
+        {{games_played}}{% endif %}
+    </span>
+    </td><td id="statNumber">
+    <span id="highScore">
+    {% if high_score>=0 %}
+    {{high_score}}
+    {% endif %}
+    </span></td><td id="statNumber">
+    <span id="score">0</span>
+    </td><td id="statNumber"><span id="time">60.000</span></td>
+</tr>
+
+</table>
+<hr />
+    <input id="currentText" type="text"
+           placeholder="Type or Tap letters!"></input>
+    <input id="validate" type="button" value="Validate"></input>
+    <input id="resetText" type="button" value="Reset"></input>
+<br/><br/>
+{% if game %}
+<table>
+    {% for i in game %}
+    <tr>
+        {% for j in i %}
+        <td id="letter">{{j}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    {% endif %}</td></table>
+<hr>
+{% endblock %}
+{% block javascript %}
+{{ super() }}
+<script type="text/javascript"
+        src="{{ url_for('static', filename='script.js') }}">
+
+</script>
+{% endblock %}

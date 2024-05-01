@@ -1,0 +1,92 @@
+html {
+  height: auto;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: linear-gradient(to left top, #000000, #ffffff);
+  /*Top left to Right Bottom*/
+}
+
+#time {
+    color: orange;
+    margin: auto;
+}
+div#gameInfo {
+  padding: 10px;
+}
+body {
+  max-width: 480px;
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+h1 {
+  color: cyan;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+div {  
+  font-size: 16px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+table {
+  table-layout: fixed;
+  text-wrap: stable;
+  word-wrap: break-word;
+  overflow: hidden;
+  overflow-block: hidden;
+  border-collapse: collapse;
+  max-width: 96%;
+  margin: auto;
+}
+tr {
+  table-layout: fixed;
+  text-wrap: stable;
+  word-wrap: break-word;
+  overflow: hidden;
+  overflow-block: hidden;
+}
+td#stat {
+  padding: 10px;
+  width: 32px;
+  max-height: 32px;
+  height: 32px;
+  text-wrap: wrap;
+  overflow: hidden;
+  font-size: 14px;
+  color: rgb(153, 85, 184);
+  border-top: 2px solid rgb(57, 0, 0);
+}
+td#statNumber {
+  padding: 0px;
+  text-wrap: wrap;
+  overflow: hidden;
+  font-size: 24px;
+  border-bottom: 1px dotted rgb(57, 0, 0);
+  color: rgb(255, 0, 0);
+}
+td#letter {
+  border: 1px solid gray;
+  width: 64px;
+  max-height: 64px;
+  height: 64px;
+  text-wrap: wrap;
+  overflow: hidden;
+  font-size: 48px;
+  cursor: pointer;
+  color: teal;
+  background: -webkit-linear-gradient(0deg, gray, white);
+  background: -o-linear-gradient(0deg, gray, white);
+  background: -moz-linear-gradient(0deg, gray, white);
+  background: linear-gradient(0deg, gray, white);
+}
+input[type=text] {
+  font-size: 16px;
+  padding: 10px;
+}
+input[type=button] {
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}

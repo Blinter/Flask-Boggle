@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>
+        {% block title %}block title{% endblock %}
+    </title>
+    {% endblock %}
+</head>
+<body>
+<h1>{% block header %}TEST HEADER{% endblock %}</h1>
+{% block content %}
+BODY CONTENT GOES HERE
+{% endblock %}
+{%block javascript %}<!-- jQuery 3.7.1 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+{% endblock %}
+</html>
