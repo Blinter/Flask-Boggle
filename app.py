@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = "oh-so-secresew"
 def make_board():
     """Initializes the session Board and populates the session list with the
     letters. Sends the current games played along with the high score.
-    We will reset the submission list upon a new browser refresh, since
+    Reset the submission list upon a new browser refresh, since
     player score will not persist across browser refresh.
     Players may reset their timer and score by refreshing the page."""
     if not session.get('board', False):
@@ -50,7 +50,7 @@ def validate():
         return 'TRY_AGAIN'
     """Board has been cleared from a game completion and 
     server must now generate a new board and validate the result.
-    This counts as a try, since the client is still attempting validation"""
+    The client is still attempting validation so respond with something."""
     if not session.get('board', False):
         session['board'] = boggle_game.make_board(6)
         session.modified = True
@@ -59,7 +59,7 @@ def validate():
                        mimetype='application/json')
     if word in session.get('submitted', []):
         """This function uses secondary validation as the game object is 
-        stored on the server and does has no ability to check for 
+        stored on the server and Class has no ability to check for 
         duplicate words."""
         return 'duplicate'
     session['submitted'] = session.get('submitted', []) + [word]
