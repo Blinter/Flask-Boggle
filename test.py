@@ -10,11 +10,11 @@ class FlaskTests(TestCase):
         app.config['TESTING'] = True
 
     def test_homepage(self):
-        """Make sure information is in the session and HTML is displayed"""
+        """Make sure that DOM elements exist"""
         with self.client:
             response = self.client.get('/')
             self.assertIn('board', session)
-            self.assertIsNone(session.get('highs_core'))
+            self.assertIsNone(session.get('high_score'))
             self.assertIsNone(session.get('games_played'))
             self.assertIn(b'<span id="highScore">', response.data)
             self.assertIn(b'<span id="score">', response.data)
@@ -33,7 +33,7 @@ class FlaskTests(TestCase):
         self.assertIn(b'ok', response.data)
 
     def test_duplicate_word(self):
-        """Test if word is valid by modifying the board in the session"""
+        """Test if word is duplicate by sending the same submission twice"""
         with self.client as client:
             with client.session_transaction() as sess:
                 sess['board'] = [["F", "A", "T", "T", "T"],
@@ -49,12 +49,12 @@ class FlaskTests(TestCase):
     def test_invalid_word(self):
         """Test if word is in the dictionary"""
         self.client.get('/')
-        response = self.client.post('/validate', data=dict(word='impossible'))
+        response = self.client.post('/validate', data=dict(word='fan'))
         self.assertIn(b'not-on-board', response.data)
 
     def non_english_word(self):
         """Test if word is on the board"""
         self.client.get('/')
         response = self.client.get(
-            '/validate', data=dict(word='fsjdakfkldsfjdslkfjdlksf'))
+            '/validate', data=dict(word='ghhdheasaddfv'))
         self.assertIn(b'not-word', response.data)
