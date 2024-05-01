@@ -40,6 +40,8 @@ def validate():
         new_score = int(request.json['score'])
         if new_score > int(session.get('high_score', 0)):
             session['high_score'] = new_score
+            session.pop('submitted', None)
+            session.pop('board', None)
             session.modified = True
             return "NEW_RECORD"
         session.pop('submitted', None)
