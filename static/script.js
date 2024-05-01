@@ -1,4 +1,4 @@
-gameTimer = 60.0000;
+gameTimer = 60.000;
 gameScore = 0;
 timerCountdown = undefined;
 const gameEnabled = () => Number(gameTimer) !== 0;
